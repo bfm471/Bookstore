@@ -19,7 +19,8 @@ public class BookController {
 	
 	@Autowired
 	private BookRepository repository;
-	@Autowired CategoryRepository catrepository;
+	@Autowired 
+	private CategoryRepository catrepository;
 	
 	@GetMapping("/*")
 	public String goTo() {
