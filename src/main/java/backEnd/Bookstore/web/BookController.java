@@ -24,6 +24,7 @@ public class BookController {
 	
 	@GetMapping("/*")
 	public String goTo() {
+		System.out.println("redirecting to booklist");
 		return("redirect:/booklist");
 	}
 	
@@ -34,6 +35,7 @@ public class BookController {
 
 	@GetMapping("/booklist")
 	public String listBooks(Model model) {
+		System.out.println("loading booklist");
 		model.addAttribute("books", repository.findAll());
 		return("booklist");
 	}
