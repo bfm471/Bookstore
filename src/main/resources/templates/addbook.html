@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Booklist</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Add Book</h1>
+	
+	<form th:object="${book}" th:action="@{/saveNew}" action="#" method="post">
+		<label for="author">Author</label>
+		<input type="text" id="author" th:field="*{author}" />
+		<td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Error</td>
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<label for="title">Title</label>
+		<input type="text" id="title" th:field="*{title}" />
+		<td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Error</td>
+		<div style="clear: both; display: block; height: 10px;"></div>		
+		<label for="isbn">ISBN</label>
+		<input type="text" id="isbn" th:field="*{isbn}" />
+		<td th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}">Error</td>
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<label for="Year">Year</label>
+		<input type="text" id="publicationYear" th:field="*{publicationYear}" />
+		<td th:if="${#fields.hasErrors('publicationYear')}" th:errors="*{publicationYear}">Error</td>
+		<div style="clear: both; display: block; height: 10px;"></div>
+		<label for="category">Category</label>
+		<select id="category" th:field="*{category}">
+			<option th:each="category: ${categories}" th:value="${category.categoryId}"
+				th:text="${category.name}">
+			</option>
+		</select>
+		<div style="clear: both; display: block; height: 10px;"></div>				
+		<input type="submit" value="Save">
+	</form>
+
+</body>
+</html>
