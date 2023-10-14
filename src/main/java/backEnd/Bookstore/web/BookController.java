@@ -48,6 +48,7 @@ public class BookController {
 		return("redirect:/booklist");
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
@@ -55,6 +56,7 @@ public class BookController {
 		return("addbook");
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/edit/{id}")
 	public String editBook(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("book",repository.findById(id));
@@ -62,6 +64,7 @@ public class BookController {
 		return("editbook");
 	}
 	
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("/saveNew")
 	public String saveNewBook(@Valid @ModelAttribute("book") Book book, BindingResult bindingResult,
 			Model model) {

@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -15,6 +16,7 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	@NotEmpty(message = "Book´s title can´t be empty")
 	@Size(min=2, max=50)
 	private String title;
 	@Size(min=2, max=40)
