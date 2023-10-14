@@ -10,17 +10,17 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 	<body>
 		<div class="container p-3">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-4">
 					<h1>Books</h1>
 				</div>
 			
-				<div class="col-sm-3">
+				<div class="col-sm-4 d-flex justify-content-center">
 					<h5>Hello <span sec:authentication="name"></span></h5>
 				</div>
 		
-				<div class="col-sm-6">
+				<div class="col-sm-4 d-flex justify-content-end">
 					<form th:action="@{/logout}" method="post">
-						<input class="btn btn-danger btn-sm m-2" type="submit" value="Sign out">
+						<input class="btn btn-info btn-sm m-2" type="submit" value="Sign out">
 					</form>
 				</div>
 			</div>
@@ -33,8 +33,8 @@ xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 						<th>ISBN</th>
 						<th>Year</th>
 						<th>Category</th>
-						<th></th>
-						<th></th>
+						<th sec:authorize="hasAuthority('ADMIN')"></th>
+						<th sec:authorize="hasAuthority('ADMIN')"></th>
 						
 					</tr>
 					<tr  th:each="book : ${books}">

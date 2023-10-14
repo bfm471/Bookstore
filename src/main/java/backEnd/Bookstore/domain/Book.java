@@ -1,5 +1,6 @@
 package backEnd.Bookstore.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,22 +15,28 @@ import jakarta.validation.constraints.Size;
 @Entity
 public class Book {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
+	
 	@NotEmpty(message = "Book´s title can´t be empty")
 	@Size(min=2, max=50)
 	private String title;
+	
 	@Size(min=2, max=40)
 	private String author;
+	
 	@Max(value=2024, message="max value is 2024")
+	@Column(name = "publicationyear")
 	private int publicationYear;
+	
 	@Size(min=10, max=13)
 	private String isbn;
+	
 	@Min(value=0, message="min value is 0")
 	private double price;
 	
 	@ManyToOne
-	@JoinColumn(name="categoryId")
+	@JoinColumn(name="categoryid")
 	private Category category;
 	
 	public Book() {}
